@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">Gerenciamento de Tarefas</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'cadastroUsuarios' %}">Cadastro de Usuários</a></li>
+                <li><a href="{% url 'cadastroTarefas' %}">Cadastro de Tarefas</a></li>
+                <li><a href="{% url 'gerenciarTarefas' %}">Gerenciar Tarefas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="tarefas">
+            <div class="coluna">
+                <h2>A Fazer</h2>
+                {% for tarefa in tarefas.afazer %}
+                <div class="card">
+                    <p><strong>Descrição:</strong> {{ tarefa.descricao }}</p>
+                    <p><strong>Setor:</strong> {{ tarefa.setor }}</p>
+                    <p><strong>Prioridade:</strong> {{ tarefa.prioridade }}</p>
+                    <p><strong>Vinculado a:</strong> {{ tarefa.vinculado_a }}</p>
+                    <div class="acoes">
+                        <a href="{% url 'editarTarefa' tarefa.id %}"><button>Editar</button></a>
+                        <a href="{% url 'excluirTarefa' tarefa.id %}"><button>Excluir</button></a>
+                    </div>
+                    <form method="post" action="{% url 'alterarStatus' tarefa.id %}">
+                        {% csrf_token %}
+                        <select name="status">
+                            <option value="A Fazer" {% if tarefa.status == 'A Fazer' %}selected{% endif %}>A Fazer</option>
+                            <option value="Fazendo" {% if tarefa.status == 'Fazendo' %}selected{% endif %}>Fazendo</option>
+                            <option value="Pronto" {% if tarefa.status == 'Pronto' %}selected{% endif %}>Pronto</option>
+                        </select>
+                        <button class="alterar-status" type="submit">Alterar Status</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="coluna">
+                <h2>Fazendo</h2>
+                {% for tarefa in tarefas.fazendo %}
+                <div class="card">
+                    <p><strong>Descrição:</strong> {{ tarefa.descricao }}</p>
+                    <p><strong>Setor:</strong> {{ tarefa.setor }}</p>
+                    <p><strong>Prioridade:</strong> {{ tarefa.prioridade }}</p>
+                    <p><strong>Vinculado a:</strong> {{ tarefa.vinculado_a }}</p>
+                    <div class="acoes">
+                        <a href="{% url 'editarTarefa' tarefa.id %}"><button>Editar</button></a>
+                        <a href="{% url 'excluirTarefa' tarefa.id %}"><button>Excluir</button></a>
+                    </div>
+                    <form method="post" action="{% url 'alterarStatus' tarefa.id %}">
+                        {% csrf_token %}
+                        <select name="status">
+                            <option value="A Fazer" {% if tarefa.status == 'A Fazer' %}selected{% endif %}>A Fazer</option>
+                            <option value="Fazendo" {% if tarefa.status == 'Fazendo' %}selected{% endif %}>Fazendo</option>
+                            <option value="Pronto" {% if tarefa.status == 'Pronto' %}selected{% endif %}>Pronto</option>
+                        </select>
+                        <button class="alterar-status" type="submit">Alterar Status</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="coluna">
+                <h2>Pronto</h2>
+                {% for tarefa in tarefas.pronto %}
+                <div class="card">
+                    <p><strong>Descrição:</strong> {{ tarefa.descricao }}</p>
+                    <p><strong>Setor:</strong> {{ tarefa.setor }}</p>
+                    <p><strong>Prioridade:</strong> {{ tarefa.prioridade }}</p>
+                    <p><strong>Vinculado a:</strong> {{ tarefa.vinculado_a }}</p>
+                    <div class="acoes">
+                        <a href="{% url 'editarTarefa' tarefa.id %}"><button>Editar</button></a>
+                        <a href="{% url 'excluirTarefa' tarefa.id %}"><button>Excluir</button></a>
+                    </div>
+                    <form method="post" action="{% url 'alterarStatus' tarefa.id %}">
+
+                        {% csrf_token %}
+                        <select name="status">
+                            <option value="A Fazer" {% if tarefa.status == 'A Fazer' %}selected{% endif %}>A Fazer</option>
+                            <option value="Fazendo" {% if tarefa.status == 'Fazendo' %}selected{% endif %}>Fazendo</option>
+                            <option value="Pronto" {% if tarefa.status == 'Pronto' %}selected{% endif %}>Pronto</option>
+                        </select>
+                        <button class="alterar-status" type="submit">Alterar Status</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</body>
+</html>

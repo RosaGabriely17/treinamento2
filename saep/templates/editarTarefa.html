@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Tarefa</title>
+    <link rel="stylesheet" href="{% static 'css/editar.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">Gerenciamento de Tarefas</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'cadastroUsuarios' %}">Cadastro de Usuários</a></li>
+                <li><a href="{% url 'cadastroTarefas' %}">Cadastro de Tarefas</a></li>
+                <li><a href="{% url 'gerenciarTarefas' %}">Gerenciar Tarefas</a></li>
+            </ul>
+        </nav>
+    </header>
+<main>
+    <h2>Editar Tarefa</h2>
+    <form class="editar" method="POST">
+        {% csrf_token %}
+        <label>Descrição:</label><br>
+        <textarea name="descricao">{{ tarefa.descricao }}</textarea><br><br>
+
+        <label>Setor:</label><br>
+        <input type="text" name="setor" value="{{ tarefa.setor }}"><br><br>
+
+        <label>Prioridade:</label><br>
+        <select name="prioridade">
+            <option value="Alta" {% if tarefa.prioridade == 'Alta' %}selected{% endif %}>Alta</option>
+            <option value="Média" {% if tarefa.prioridade == 'Média' %}selected{% endif %}>Média</option>
+            <option value="Baixa" {% if tarefa.prioridade == 'Baixa' %}selected{% endif %}>Baixa</option>
+        </select><br><br>
+
+        <label>Status:</label><br>
+        <select name="status">
+            <option value="A Fazer" {% if tarefa.status == 'A Fazer' %}selected{% endif %}>A Fazer</option>
+            <option value="Fazendo" {% if tarefa.status == 'Fazendo' %}selected{% endif %}>Fazendo</option>
+            <option value="Pronto" {% if tarefa.status == 'Pronto' %}selected{% endif %}>Pronto</option>
+        </select><br><br>
+
+        <label>Usuário:</label><br>
+        <select name="vinculado_a">
+            {% for usuario in usuarios %}
+                <option value="{{ usuario.id }}" {% if usuario == tarefa.vinculado_a %}selected{% endif %}>{{ usuario.nome }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Salvar</button>
+        <a href="{% url 'gerenciarTarefas' %}">Cancelar</a>
+    </form>
+</main>
+</body>
+</html>

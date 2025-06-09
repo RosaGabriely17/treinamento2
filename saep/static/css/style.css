@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Arial, sans-serif;
+}
+
+header{
+    background-color: #0056b3;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+header .logo{
+    color: white;
+    font-size: 20px;
+    
+}
+
+header ul{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header li a {
+    text-decoration: none;
+    color: white;
+}
+
+main {
+    margin-top: 20px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input{
+    margin-top: 10px;
+    margin-left: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px 15px;
+}
+
+button {
+    background-color: #0056b3;
+    color: white;
+    padding: 5px 6px;
+    border-radius: 3px;
+    border: none;
+}
+
+select {
+    margin-top: 10px;
+    padding: 5px 4px;
+    background-color: rgb(252, 251, 251);
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-left: 4px;
+}
+
+
+/* GERENCIAMENTO DE TAREFAS */
+
+nav a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+.tarefas {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.coluna {
+    flex: 1;
+    min-width: 250px;
+}
+
+.coluna h2 {
+    margin-bottom: 10px;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.acoes {
+    margin: 10px 0;
+}
+
+.acoes button {
+    margin-right: 5px;
+    padding: 5px 10px;
+}
+
+select {
+    margin-right: 5px;
+    padding: 5px;
+}
+
+.alterar-status {
+    padding: 5px 10px;
+}
