@@ -23,9 +23,9 @@
         <form method="POST">
             {% csrf_token %}
             <label for="descricao">Descriçao:</label><br>
-            <input type="text"  name="descricao"><br>
+            <input type="text"  name="descricao" required><br>
             <label for="setor">Setor:</label><br>
-            <input type="text" name="setor"><br><br>
+            <input type="text" name="setor" required><br><br>
             <label for="usuario">Usuario:</label><br>
             <select name="usuario">
                 {% for usuario in usuarios %}
@@ -37,7 +37,7 @@
                 <option>Baixa</option>
                 <option>Média</option>
                 <option>Alta</option>
-            </select> <br><br>
+            </select> <br>
 
             <button type="submit">Cadastrar</button>
         </form>

@@ -23,7 +23,6 @@
         {% csrf_token %}
         <label>Descrição:</label><br>
         <textarea name="descricao">{{ tarefa.descricao }}</textarea><br><br>
-
         <label>Setor:</label><br>
         <input type="text" name="setor" value="{{ tarefa.setor }}"><br><br>
 
@@ -44,7 +43,7 @@
         <label>Usuário:</label><br>
         <select name="vinculado_a">
             {% for usuario in usuarios %}
-                <option value="{{ usuario.id }}" {% if usuario == tarefa.vinculado_a %}selected{% endif %}>{{ usuario.nome }}</option>
+                <option value="{{ usuario.id }}" {% if usuario == tarefa.vinculado_a %}selected{% endif %}>{{ usuario.name }}</option>
             {% endfor %}
         </select><br><br>
 

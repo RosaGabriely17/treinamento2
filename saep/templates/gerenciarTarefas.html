@@ -27,10 +27,13 @@
                     <p><strong>Descrição:</strong> {{ tarefa.descricao }}</p>
                     <p><strong>Setor:</strong> {{ tarefa.setor }}</p>
                     <p><strong>Prioridade:</strong> {{ tarefa.prioridade }}</p>
-                    <p><strong>Vinculado a:</strong> {{ tarefa.vinculado_a }}</p>
+                    <p><strong>Vinculado a:</strong> {{ tarefa.usuario.name }}</p>
                     <div class="acoes">
                         <a href="{% url 'editarTarefa' tarefa.id %}"><button>Editar</button></a>
-                        <a href="{% url 'excluirTarefa' tarefa.id %}"><button>Excluir</button></a>
+                        <form method="post" action="{% url 'excluirTarefa' tarefa.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir esta tarefa?')">Excluir</button>
+                        </form>
                     </div>
                     <form method="post" action="{% url 'alterarStatus' tarefa.id %}">
                         {% csrf_token %}
@@ -52,10 +55,13 @@
                     <p><strong>Descrição:</strong> {{ tarefa.descricao }}</p>
                     <p><strong>Setor:</strong> {{ tarefa.setor }}</p>
                     <p><strong>Prioridade:</strong> {{ tarefa.prioridade }}</p>
-                    <p><strong>Vinculado a:</strong> {{ tarefa.vinculado_a }}</p>
+                    <p><strong>Vinculado a:</strong> {{ tarefa.usuario.name }}</p>
                     <div class="acoes">
                         <a href="{% url 'editarTarefa' tarefa.id %}"><button>Editar</button></a>
-                        <a href="{% url 'excluirTarefa' tarefa.id %}"><button>Excluir</button></a>
+                        <form method="post" action="{% url 'excluirTarefa' tarefa.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir esta tarefa?')">Excluir</button>
+                        </form>
                     </div>
                     <form method="post" action="{% url 'alterarStatus' tarefa.id %}">
                         {% csrf_token %}
@@ -77,10 +83,13 @@
                     <p><strong>Descrição:</strong> {{ tarefa.descricao }}</p>
                     <p><strong>Setor:</strong> {{ tarefa.setor }}</p>
                     <p><strong>Prioridade:</strong> {{ tarefa.prioridade }}</p>
-                    <p><strong>Vinculado a:</strong> {{ tarefa.vinculado_a }}</p>
+                    <p><strong>Vinculado a:</strong> {{ tarefa.usuario.name }}</p>
                     <div class="acoes">
                         <a href="{% url 'editarTarefa' tarefa.id %}"><button>Editar</button></a>
-                        <a href="{% url 'excluirTarefa' tarefa.id %}"><button>Excluir</button></a>
+                        <form method="post" action="{% url 'excluirTarefa' tarefa.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir esta tarefa?')">Excluir</button>
+                        </form>
                     </div>
                     <form method="post" action="{% url 'alterarStatus' tarefa.id %}">
 

@@ -22,8 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuario/', cadastroUsuarios, name='cadastroUsuarios'),
     path('tarefas/', cadastroTarefas, name='cadastroTarefas'),
-    path('gerenciar/', gerenciarTarefas, name='gerenciarTarefas'),
-     path('editar/<int:id>/',editarTarefa, name='editarTarefa'),
+    path('', gerenciarTarefas, name='gerenciarTarefas'),
+    path('editar/<int:id>/',editarTarefa, name='editarTarefa'),
     path('excluir/<int:id>/',excluirTarefa, name='excluirTarefa'),
     path('alterar-status/<int:id>/', alterarStatus, name='alterarStatus'),
 
